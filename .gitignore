@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+.venv/
+venv/
+env/
+
+# Build / cache
+.next/
+out/
+build/
+frontend/.next/
+frontend/out/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Env and secrets
+.env
+.env*
+*.env
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and DBs
+*.log
+*.sqlite3
+*.db
+
+# Backend build
+*.pid
+*.egg-info/
+dist/
+
+# Next / Vercel
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# BFG / backup artifacts (if any get copied)
+.bfg-report/
+..bfg-report/
+**/..bfg-report/

@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "name": "Frontend (projectAtlas)",
+      "path": "."
+    },
+    {
+      "name": "Backend (AR Atlas)",
+      "path": "..\\AR Atlas"
+    }
+  ],
+  "settings": {}
+}

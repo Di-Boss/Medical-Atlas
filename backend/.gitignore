@@ -1,0 +1,45 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+*.env
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Trained model files
+training.cbm
+
+# Uvicorn or build artifacts
+*.pid
+*.egg-info/
+build/
+dist/
+
+# Jupyter notebooks checkpoints (if any)
+.ipynb_checkpoints/
+
+# Compiled binaries
+*.so
+*.dll
+*.exe
