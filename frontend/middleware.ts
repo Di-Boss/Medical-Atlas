@@ -15,7 +15,7 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith("/admin")) {
     const role = request.cookies.get("user_role")?.value
     if (role !== "Admin") {
-      return NextResponse.redirect(new URL("/dashboard", request.url))
+      return NextResponse.redirect(new URL("/", request.url))
     }
   }
 
