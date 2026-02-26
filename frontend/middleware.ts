@@ -13,7 +13,12 @@ export function middleware(request: NextRequest) {
 
   // Protect admin: only allow if user_role cookie is Admin (case-insensitive)
   if (pathname.startsWith("/admin")) {
-    const role = request.cookies.get("user_role")?.value
+    let role = request.cookies.get("user_role")?.value
+    if (!role) {
+      const cookieHeader = request.headers.get("cookie")
+      const match = cookieHeader?.match(/\buser_role=([^;]+)/)
+      role = match ? match[1].trim() : null
+    }
     if (!role || role.toLowerCase() !== "admin") {
       return NextResponse.redirect(new URL("/", request.url))
     }
