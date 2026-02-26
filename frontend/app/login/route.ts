@@ -34,7 +34,8 @@ export async function POST(request: NextRequest) {
 
       if (response.ok && isJson) {
         // Backend returns { access_token, refresh_token, token_type, expires_in, role }
-        const role = (data.role as string) || "Doctor"
+        const rawRole = (data.role as string) || "Doctor"
+        const role = rawRole.toLowerCase() === "admin" ? "Admin" : rawRole
         const res = NextResponse.json({
           success: true,
           role,
@@ -43,11 +44,15 @@ export async function POST(request: NextRequest) {
           token_type: data.token_type,
           expires_in: data.expires_in,
         })
+        const isSecure =
+          request.url.startsWith("https://") ||
+          request.headers.get("x-forwarded-proto") === "https"
         res.cookies.set("user_role", role, {
           httpOnly: true,
           sameSite: "lax",
           maxAge: 60 * 60 * 24, // 24 hours
           path: "/",
+          secure: isSecure,
         })
         return res
       }
