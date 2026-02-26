@@ -4,14 +4,8 @@ import type { NextRequest } from "next/server"
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Clear role when visiting login page (logout)
-  if (pathname === "/") {
-    const res = NextResponse.next()
-    res.cookies.set("user_role", "", { path: "/", maxAge: 0 })
-    return res
-  }
-
   // Protect admin: only allow if user_role cookie is Admin (case-insensitive)
+  // (Do not clear cookie on "/" — that was removing the cookie so /admin had no Cookie header)
   if (pathname.startsWith("/admin")) {
     let role = request.cookies.get("user_role")?.value
     if (!role) {
@@ -28,5 +22,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/admin", "/admin/:path*"],
+  matcher: ["/admin", "/admin/:path*"],
 }
